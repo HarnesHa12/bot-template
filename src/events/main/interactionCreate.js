@@ -16,6 +16,7 @@ module.exports = {
                 catch (error) {
                     handleError(client, interaction, error);
                 }
+                
                 break;
             }
             case interaction.isButton(): {
@@ -28,8 +29,9 @@ module.exports = {
                 }
                 catch (error) {
                     handleError(client, interaction, error);
-                    interaction.reply({ content: 'Error' });
                 }
+
+                break;
             }
         }
     },
