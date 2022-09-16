@@ -20,8 +20,6 @@ module.exports = {
             }
             case interaction.isButton(): {
                 const button = client.interactions.filter(x => x.type === 'button' && interaction.customId.includes(x.customId)).first();
-
-                console.log(button, client.interactions);
                 
                 if (!button) return handleError(client, interaction, new Error(`Button ${interaction.customId} was not found.`));
                 
