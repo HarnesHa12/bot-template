@@ -33,6 +33,20 @@ module.exports = {
 
                 break;
             }
+            case interaction.isSelectMenu(): {
+                const selectOption = client.interactions.filter(x => x.type === 'select-option' && interaction.values.includes(x.customId)).first();
+
+                if (!selectOption) return handleError(client, interaction, new Error(`Select option ${interaction.customId} was not found.`));
+
+                try {
+                    await selectOption.run(client, interaction);
+                }
+                catch (error) {
+                    handleError(client, interaction, error);
+                }
+
+                break;
+            }
         }
     },
 };
