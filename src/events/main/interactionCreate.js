@@ -47,6 +47,20 @@ module.exports = {
 
                 break;
             }
+            case interaction.isModalSubmit(): {
+                const modal = client.interactions.filter(x => x.type === 'modal' && interaction.customId.includes(x.customId)).first();
+
+                if (!modal) return handleError(client, interaction, new Error(`Modal ${interaction.customId} was not found.`));
+
+                try {
+                    await modal.run(client, interaction);
+                }
+                catch (error) {
+                    handleError(client, interaction, error);
+                }
+
+                break;
+            }
         }
     },
 };
