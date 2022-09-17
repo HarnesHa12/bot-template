@@ -16,7 +16,7 @@ module.exports = (client) => {
             for (const file of files) {
                 const interaction = require(`../interactions/${dir}/${type}/${file}`);
 
-                client.interactions.set(interaction.customId, interaction);
+                client.interactions.set(interaction?.data?.name?.toLowerCase()?.replaceAll(' ', '_') || interaction?.customId, interaction);
             }
         }
     }
