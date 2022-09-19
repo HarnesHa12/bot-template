@@ -64,7 +64,7 @@ module.exports = {
             case interaction.isContextMenuCommand(): {
                 const contextMenu = client.interactions.filter(x => x.type === 'context-menu').get(interaction.commandName.toLowerCase().replaceAll(' ', '_'));
 
-                if (!contextMenu) return handleError(client, interaction, new Error(`Modal ${interaction.customId} was not found.`));
+                if (!contextMenu) return handleError(client, interaction, new Error(`Context menu ${interaction.customId} was not found.`));
 
                 try {
                     await contextMenu.run(client, interaction);
