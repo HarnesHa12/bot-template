@@ -20,7 +20,7 @@ module.exports = {
                 break;
             }
             case interaction.isButton(): {
-                const button = client.interactions.filter(x => x.type === 'button' && interaction.customId.includes(x.customId)).first();
+                const button = client.interactions.filter(x => x.type === 'button').get(interaction.customId.split('-')[0]);
                 
                 if (!button) return handleError(client, interaction, new Error(`Button ${interaction.customId} was not found.`));
                 
@@ -48,7 +48,7 @@ module.exports = {
                 break;
             }
             case interaction.isModalSubmit(): {
-                const modal = client.interactions.filter(x => x.type === 'modal' && interaction.customId.includes(x.customId)).first();
+                const modal = client.interactions.filter(x => x.type === 'modal').get(interaction.customId.split('-')[0]);
 
                 if (!modal) return handleError(client, interaction, new Error(`Modal ${interaction.customId} was not found.`));
 
