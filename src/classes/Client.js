@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, REST } = require('discord.js');
 require('dotenv').config();
 
-module.exports = class ExampleClient extends Client {
+module.exports = class extends Client {
     constructor() {
         super({
             intents: [
